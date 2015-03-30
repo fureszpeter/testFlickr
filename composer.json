@@ -1,0 +1,29 @@
+{
+  "name": "fureszpeter/twitter",
+  "description": "competency test",
+  "require": {
+    "php" : ">=5.5",
+    "vlucas/phpdotenv": "~1.1@dev",
+    "illuminate/config": "5.1.*@dev",
+    "illuminate/filesystem": "5.1.*@dev",
+    "components/jquery": "dev-master"
+  },
+  "require-dev" :{
+    "ext-runkit" : "*",
+    "phpunit/phpunit": "~4.7@dev",
+    "tcz/phpunit-mockfunction": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "": "src/"
+    }
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Furesz Peter",
+      "email": "fureszpeter@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev"
+}
