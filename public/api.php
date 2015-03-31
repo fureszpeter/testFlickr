@@ -10,8 +10,12 @@ use Furesz\Flickr\FlickrRepository;
 header('Content-type: application/json');
 
 $repository = new FlickrRepository();
-$response = $repository->searchTags(["chamonix"], ["ski"], ["snow"]);
-$entries = $response->getEntries();
+try{
+    $response = $repository->searchTags(["chamonix", "ski", "snow"]);
+    $entries = $response->getEntries();
+}catch (\Exception $e){
+    //Do some error reporting here
+}
 
 $apiResponse = [];
 foreach ($entries as $entry) {
