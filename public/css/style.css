@@ -26,8 +26,8 @@
     opacity: 1;
 }
 
-.awesome {
-    visibility: hidden;
+.holder .awesome {
+    /*visibility: hidden;*/
 }
 
 .awesome i {

@@ -13,23 +13,8 @@ class FlickrEntryTest extends \PHPUnit_Framework_TestCase
         $XMLResponse = simplexml_load_string($responseString);
 
         foreach ($XMLResponse->entry as $entry) {
-            $entryDTO[FlickrEntry::FIELD_TITLE] = (string)$entry->title;
-            $entryDTO[FlickrEntry::FIELD_LINK] = (string)$entry->link["href"];
-            foreach ($entry->link as $link){
-                if ($link->attributes()["rel"]=="alternate"){
-                    $entryDTO[FlickrEntry::FIELD_LINK] = (string)$link["href"];
-                }elseif($link->attributes()["rel"]=="enclosure"){
-                    $entryDTO[FlickrEntry::FIELD_SRC] = (string)$link["href"];
-                }
-            }            $entryDTO[FlickrEntry::FIELD_ID] = (string)$entry->id;
-            $entryDTO[FlickrEntry::FIELD_PUBLISHED] = (string)$entry->published;
-            $entryDTO[FlickrEntry::FIELD_UPDATED] = (string)$entry->updated;
-            $entryDTO[FlickrEntry::FIELD_HTML] = (string)$entry->content;
-
-            $authorDTO[FlickrAuthor::FIELD_NAME] = (string)$entry->author->name;
-            $authorDTO[FlickrAuthor::FIELD_URI] = (string)$entry->author->uri;
-            $authorDTO[FlickrAuthor::FIELD_NSID] = (string)$entry->author->nsid;
-            $authorDTO[FlickrAuthor::FIELD_ICON] = (string)$entry->author->buddyicon;
+            $entryDTO = \Furesz\Flickr\FlickrResponse::convertXmlEntryToDTO($entry);
+            $authorDTO = \Furesz\Flickr\FlickrResponse::convertXmlAuthorToDTO($entry);
 
             $FlickrEntry = new FlickrEntry($entryDTO, new FlickrAuthor($authorDTO));
             $this->assertInstanceOf(FlickrEntry::class, $FlickrEntry);

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css?dsfds">
 
     <!--[if lt IE 9]>
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -17,9 +17,9 @@
     <![endif]-->
 </head>
 
-<body>
+<body style="background: #000000;">
 <div class="container">
-    <div class="row no-gutter" id="target">
+    <div class="row" id="target">
     </div>
 </div>
 
@@ -29,10 +29,10 @@
     $().ready(function () {
         var apiUrl = "/api.php";
         $.getJSON(apiUrl, function (data) {
-            $.each(data, function (key, entity) {
-                $("#target").append('<div class="col-md-2 holder"><span class="title pull-left">' + entity.author + '</span></div>');
+            $.each(data, function (key, val) {
+                $("#target").append('<div class="col-md-2 holder" onclick="document.location.href=\''+val.link+';\'"><span class="title pull-left">' + val.author + '</span></div>');
                 $("#target .col-md-2").last().append("<span class='pull-center awesome'><i class='fa fa-camera-retro fa-2x'></i></span>");
-                $("#target .col-md-2").last().css('background-image', 'url(' + entity.src + ')');
+                $("#target .col-md-2").last().css('background-image', 'url(' + val.src.replace(/(_[b]{1})\.(.*)$/g, "_m.$2") + ')');
             });
         });
     });
