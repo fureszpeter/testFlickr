@@ -1,0 +1,42 @@
+.title {
+    background-color: black;
+    color: #fff;
+    display: inline;
+    padding: 0.5rem;
+
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+
+    text-decoration: none;
+    text-shadow: 1px 1px 1px #666;
+    text-align: center;
+
+}
+
+.holder {
+    opacity: 0.8;
+    background: rgba(0, 0, 0, 0) url();
+    background-size: cover;
+    transition: opacity 1s;
+    width: 200px;
+    height: 200px;
+}
+
+.holder:hover {
+    opacity: 1;
+}
+
+.awesome {
+    visibility: hidden;
+}
+
+.awesome i {
+    text-align: center;
+    height: 100%;
+    margin-top: 50%;
+}
+
+.holder:hover .awesome {
+    visibility: visible;
+}
+
